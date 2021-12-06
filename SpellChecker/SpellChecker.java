@@ -2,16 +2,19 @@ import java.util.Scanner;
 import java.io.*;
 import java.lang.StringBuffer;
 
-/*
+/**
  * This class implements a spell checker application. 
- * This class requires a proper implementation to the StirngSet class.
- */
-public class SpellChecker {
+ * This class implements StringSet to hash the entries from Dictionary given
+ **/
+public class SpellChecker 
+{
 
-  public static void main(String [] args) {
+  public static void main(String [] args) 
+  {
     File f = new File("dictionary");
     
-    try {
+    try 
+    {
       Scanner sk = new Scanner(f);
         
       StringSet x = new StringSet();
@@ -21,17 +24,19 @@ public class SpellChecker {
         String word = sk.next();
         x.insert(word);      
       }
-      System.out.println("Dicitonary loaded...");
+      System.out.println("Dictionary loaded...");
      
       sk = new Scanner(System.in);
       
       // Keep suggesting alternatives as long as the user makes an input.
-      while (sk.hasNext()) {
+      while (sk.hasNext()) 
+      {
         String word = sk.next();
         System.out.println(word);
         if (x.find(word))
 	  			System.out.println(word + " is correct.");
-        else {
+        else 
+	{
 	  			System.out.println("Suggesting alternatives ...");
           // Look into the StringSet for all possible alternatives of the input word mis-spelled by one character.
                 for (int i = 0; i < word.length(); i++)
@@ -42,11 +47,12 @@ public class SpellChecker {
                     
                     string.setCharAt(i, letter);
                     String str = string.toString();
+			    
                     if (x.find(str))
                         System.out.println(str);
                     }
 
-				}
+		}
             }
         }
       } 
