@@ -3,24 +3,49 @@ public class StringNode {
   private String key;
   private StringNode next;
 
-  public StringNode(String _key, StringNode _next) {
+  /**
+  * StringNode constructor
+  * @param String _key: key to be keyed on
+  * @param StringNode _next pointer to next StringNode
+  **/
+  public StringNode(String _key, StringNode _next) 
+  {
     key = _key;
     next = _next;
   }
 
-  public String getKey() {
+  /**
+  * getter method for key
+  * @return String Key: key value
+  **/
+  public String getKey() 
+  {
     return key;
   }
 
-  public void setKey(String _key) {
+  /**
+  * setter for key
+  **/
+  public void setKey(String _key) 
+  {
     key = _key;
   }
 
-  public StringNode getNext() {
+  /**
+  * method to return next StringNode
+  * @return next: pointer to next StringNode
+  **/
+  public StringNode getNext() 
+  {
     return next;
   }
 
-  public void setNext(StringNode _next) {
+  /**
+  * setter for next StringNode
+  * @return _next: next StringNode
+  **/
+  public void setNext(StringNode _next) 
+  {
     next = _next;
   }
 
