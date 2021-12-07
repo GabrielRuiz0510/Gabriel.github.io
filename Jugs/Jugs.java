@@ -1,17 +1,25 @@
 import java.util.Scanner;
 
+/**
+*   Jugs program to solve the Jugs problem through recursion and depth_first search
+**/
 public class Jugs
 {
-    private boolean[][] visited;
-    private int[] predA;
-    private int[] predB;
-    private static int jug1Cap;
-    private static int jug2Cap;
+    private boolean[][] visited;    //table to store visited states[a][b]
+    private int[] predA;            //global variable for pred for state A
+    private int[] predB;            //global variable for pred for state B
+    private static int jug1Cap;     //global variable capacity limit for jug1(jugA)
+    private static int jug2Cap;     //global variable capacity limit for jug2(jugB)
     private boolean flag = false; 
-    private String[][] path;
+    private String[][] path;        //table that prints out strings according to given states A and B
     private static int trackA = 0;
     private static int trackB = 0;
 
+    /**
+    *   DFS_Visit method used to check if table[i][a] is a visited state
+    *   @param int i, int a: coordinates for visited table
+    *   @return bool
+    **/
     private boolean DFS_Visit(int i, int a)
     {
 
@@ -22,33 +30,37 @@ public class Jugs
            
            // if (i == 0 && a == 0)
                 return visited[i][a];
-          //  else if (i == 0)
-          //      return visited[i][a - 1];
-          //  else if (a == 0)
-          //      return visited[i - 1][a];
-          //  else
-          //      return visited[i - 1][a - 1];
         }
-        return false;
+        return false; 
     }
 
+    /**
+    *   pourWater recursive method to calculate path for A and B to match C
+    *   @param int jugA, JugB: current amount of water in each jug in int
+    *   @param int c: target number
+    *   @return bool: return true if path is found, false if else
+    **/
     public boolean pourWater(int jugA, int jugB, int c)
     {
-        int jug1;
-        int jug2;
+        int jug1;   //jug1 variable for jugA to preserve JugA
+        int jug2;   //jug2 variable for jugB to preserve jugB
+        
+        //if statement to see if target has been reached else continue
         if ((jugA + jugB) == c)
         {
             visited[jugA][jugB] = true;
-            predA[trackA++] = jugA;
-            predB[trackB++] = jugB;
+            predA[trackA++] = jugA;     //backpointer 
+            predB[trackB++] = jugB;     //backpointer
             return flag = visited[jugA][jugB];
         }
+        
+        //else if to check if this is the first call
         else if (DFS_Visit(0,0) == false)
         {
             jug1 = jug1Cap;
             jug2 = jugB;
             visited[0][0] = true;
-            return flag = pourWater(jug1, jug2, c);
+            return flag = pourWater(jug1, jug2, c); //recursive call
         }
         else if(DFS_Visit(jugA, jugB) == false )
         {
@@ -61,11 +73,11 @@ public class Jugs
             {
                 jug1 = jug1Cap;
 
-                //store previous values into two seperate arrays;
-                predA[trackA++] = jugA;
+                //store previous values into two seperate arrays(backpointers);
+                predA[trackA++] = jugA; 
                 predB[trackB++] = jugB;
 
-                return flag = pourWater(jug1, jug2, c);
+                return flag = pourWater(jug1, jug2, c); //recursive call
             }
 
             //if jug2 is full pour out jug2
@@ -73,49 +85,54 @@ public class Jugs
             {
                 jug2 = 0;
 
-                predA[trackA++] = jugA;
+                predA[trackA++] = jugA; //backpointers
                 predB[trackB++] = jugB;
 
                 return flag = pourWater(jug1, jug2, c);
             }
             
-            //check for min between jug1 and the difference between the cap of jug2 minus its content    
+            //check for minimum between jug1 and the difference between the cap of jug2 minus its content    
             else if  ((jug2Cap - jug2) < jug1)
             {
                 int tempHold = jug2Cap - jug2;
 
-                //pour
+                //pour from jug 1 to jug 2 using the difference from jug2 capacity and current amount
                 jug1 -= tempHold;
                 jug2 += tempHold;
                 
-                predA[trackA++] = jugA;
+                predA[trackA++] = jugA; //backpointers
                 predB[trackB++] = jugB;
  
-                return flag = pourWater(jug1, jug2, c);
+                return flag = pourWater(jug1, jug2, c); //recursive call
             }
+            
+            //jug1 had less
             else
             {
                 int tempHold = jug1;
                 
-                //pour
+                //pour from jug1 to jug2
                 jug1 -= tempHold;
                 jug2 += tempHold;
                 
-                predA[trackA++] = jugA;
+                predA[trackA++] = jugA; //backpointers
                 predB[trackB++] = jugB;
  
-                return flag = pourWater(jug1, jug2, c);
+                return flag = pourWater(jug1, jug2, c); //recursive call
             }
 
         }
         //backtrack
         else
             return flag = false;
-        
-      // return flag;  
 
     }
     
+    
+    /**
+    *   main method that reads in users input asking for A, B, and C. calls methods to solve the problem
+    *   @param String[] args
+    **/
     public static void main(String[] args)
     {
         Jugs j = new Jugs();
@@ -146,14 +163,18 @@ public class Jugs
         {
             for (int a = 0; a <= jug2Cap; a++)
             {
+                //if jug 1 is filled
                 if (i == jug1Cap)
                 {
                     j.path[i][a] = "Fill Jug 1 ";
                 }
+                //if jug 2 is full
                 else if (a == 0)
                 {
                     j.path[i][a] = "Empty Jug 2 ";
                 }
+                
+                //if their is space for pouring
                 else
                 {
                     j.path[i][a] = "Pour Jug 1 -> Jug 2 ";
@@ -171,7 +192,7 @@ public class Jugs
             System.out.println("Impossible!");
     }
 
-   /**print method to print off predA and predB and use them as index to match path 2d array
+   /**print method to print off strings using predA and predB as the index to match the path 2d array
     *and print off the right string according to its index
     */
    public void print()
