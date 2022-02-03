@@ -8,4 +8,4 @@ We calculate using the formula sqrt((x2 − x1)^2 + (y2 − y1)^2)
 
 We store each point in a 2D hashtable made of Nodes
 We use prime number modulo to minimize collisions
-We compare each point in its gird cell and neighbouring grid cells and always maintaining minimum distance we have computed so far.
+We compare each point in its grid cell and neighbouring grid cells and always maintaining minimum distance we have computed so far.
