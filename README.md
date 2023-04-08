@@ -1,14 +1,14 @@
 # Gabriel.github.io
 <h1 align="center">Hi 👋, I'm Gabriel Ruiz</h1>
-<h3 align="center">A passionate Computer Scientist, looking to expand my knowledge</h3>
+<h3 align="center">A Computer Scientist with a concentration in Data Science</h3>
 
-- 🌱 I’m currently learning **SQL, python, C++, software engineering, and statistics**
+- 🌱 I’m currently learning **Machine Learning, Python, C++, Web Scraping, and UI Design**
 
-- 💬 Ask me about **data structures, pointers, and algorithms**
+- 💬 Ask me about **data structures, Machine Learning, and Web Scraping**
 
 - 📫 How to reach me **Gaberuiz1994@gmail.com**
 
-- 📄 Know about my experiences [https://www.linkedin.com/in/gabriel-ruiz-150b87101/](https://www.linkedin.com/in/gabriel-ruiz-150b87101/)
+- 📄 Know about my experiences [www.linkedin.com](https://www.linkedin.com/in/gabriel-ruiz-150b87101/)
 
 - ⚡ Fun fact **I have two different ear shapes**
 
