@@ -1,0 +1,2 @@
+This project uses Selenium to scrape attributes for IMDB top 100 video games.
+It collects attributes from each game title and puts it into a Json line file.
