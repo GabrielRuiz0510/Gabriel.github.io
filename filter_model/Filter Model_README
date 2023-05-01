@@ -1,0 +1,17 @@
+This a simple content based filter model.
+It takes the csv file provided that contains 1000 movies scraped from IMDB and 
+puts it into a dataframe with Pandas. It proceeds to split the data between text data 
+and the other columns which are Genre, Overview, Series_Title. It uses SentenceTransformer 
+to make the model that takes the text data and places them in a dense vector space for clustering.
+This is followed up by cosine similarity to finally create a dataframe that holds the recommended 
+movies for each title. The program asks the user for a movie and the recommendation systems searches 
+by partial or full title name while ignoring case sensitive letters. The program proceeds to find the film 
+and print the top 5 recommended films. The user can also ask to print the plots and genres for each film.
+
+A list of packages: 
+Numpy
+Matplotlib.pyplot
+Sentence_transformers
+Pandas
+Sklearn
+
