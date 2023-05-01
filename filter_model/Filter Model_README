@@ -7,6 +7,7 @@ This is followed up by cosine similarity to finally create a dataframe that hold
 movies for each title. The program asks the user for a movie and the recommendation systems searches 
 by partial or full title name while ignoring case sensitive letters. The program proceeds to find the film 
 and print the top 5 recommended films. The user can also ask to print the plots and genres for each film.
+It can also randomly choose a film instead of asking for a title through the random_movie function.
 
 A list of packages: 
 Numpy
